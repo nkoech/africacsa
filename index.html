@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Farming Households</title>
+    <META NAME="viewport" CONTENT="width=device-width, height=device-height, initial-scale=1, user-scalable=no"/>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body hola-ext-player="1">
+    <div id="header">
+        <a class="icon ciat" href="http://ciat.cgiar.org/">&copy; CIAT 2015</a>
+        <div id="share">
+            <span class='st_facebook_hcount' displayText='Facebook'></span>
+            <span class='st_twitter_hcount' displayText='Tweet'></span>
+            <span class='st_pinterest_hcount' displayText='Pinterest'></span>
+
+            <script type="text/javascript">var switchTo5x=true;</script>
+            <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+            <script type="text/javascript">stLight.options({publisher: "d0e73f7a-aedf-463c-8ccb-9dc9792fa90b", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+        </div>
+    </div>
+    <div id='admin0-legend' style='display:none;'>
+        <div class='legend-title'>Farming Households - 2015</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#ffffe5;'></span>0 - 91953</li>
+                <li><span style='background:#fff7bc;'></span>91954 - 375035</li>
+                <li><span style='background:#fee391;'></span>375036 - 814286</li>
+                <li><span style='background:#fec44f;'></span>814287 - 1440040</li>
+                <li><span style='background:#fe9929;'></span>1440041 - 2702350</li>
+                <li><span style='background:#ec7014;'></span>2702351 - 4780040</li>
+                <li><span style='background:#cc4c02;'></span>4780041 - 7741910</li>
+                <li><span style='background:#993404;'></span>7741911 - 11655800</li>
+                <li><span style='background:#662506;'></span>11655801 - 25591100</li>
+            </ul>
+        </div>
+        <div class='legend-source'>Source: <a href='http://ciat.cgiar.org/' target='_blank'>&copy; CIAT 2014 </a></div>
+    </div>
+    <div id='admin1-legend' style='display:none;'>
+        <div class='legend-title'>Farming Households - 2015</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#ffffe5;'></span>0 - 40586</li>
+                <li><span style='background:#fff7bc;'></span>40587 - 122263</li>
+                <li><span style='background:#fee391;'></span>122264 - 227400</li>
+                <li><span style='background:#fec44f;'></span>227401 - 370040</li>
+                <li><span style='background:#fe9929;'></span>370041 - 564771</li>
+                <li><span style='background:#ec7014;'></span>564772 - 848721</li>
+                <li><span style='background:#cc4c02;'></span>848722 - 1296690</li>
+                <li><span style='background:#993404;'></span>1296691 - 2482120</li>
+                <li><span style='background:#662506;'></span>2482121 - 6797620</li>
+            </ul>
+        </div>
+        <div class='legend-source'>Source: <a href='http://ciat.cgiar.org/' target='_blank'>&copy; CIAT 2015 </a></div>
+    </div>
+    <div id='admin2-legend' style='display:none;'>
+        <div class='legend-title'>Farming Households - 2015</div>
+        <div class='legend-scale'>
+            <ul class='legend-labels'>
+                <li><span style='background:#ffffe5;'></span>0 - 11715</li>
+                <li><span style='background:#fff7bc;'></span>11716 - 30480</li>
+                <li><span style='background:#fee391;'></span>30481 - 52744</li>
+                <li><span style='background:#fec44f;'></span>52745 - 79641</li>
+                <li><span style='background:#fe9929;'></span>79642 - 117370</li>
+                <li><span style='background:#ec7014;'></span>117371 - 181218</li>
+                <li><span style='background:#cc4c02;'></span>181219 - 291678</li>
+                <li><span style='background:#993404;'></span>291679 - 479885</li>
+                <li><span style='background:#662506;'></span>479886 - 1157290</li>
+            </ul>
+        </div>
+        <div class='legend-source'>Source: <a href='http://ciat.cgiar.org/' target='_blank'>&copy; CIAT 2014 </a></div>
+    </div>
+    <div id="map"></div>
+    <div id="footer">
+        <div style="float: left; width: 99%; padding: 0 0 0 10px;">
+            <p style='font-weight: bold;'>
+                About this map
+            </p>
+            <p>
+                This interactive map was developed with the sole purpose of providing visualization of the total number of farming households in Africa by 2015. The data was derived from Afripop’s 2015 raster layer by first subtracting urban population and then dividing the result (rural population) by the average household size in Africa which is approximately five people. Zoom in to a country to view farming households at local administrative units. Map styled with <a href="https://www.mapbox.com/mapbox-studio/">Mapbox Studio</a>. <strong>Credits: </strong><a href="http://ciat.cgiar.org/">International Center for Tropical Agriculture - CIAT</a>
+            </p>
+        </div>
+    </div>
+</body>
+<script src='js/app.js'></script>
+</html>
