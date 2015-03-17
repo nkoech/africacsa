@@ -55,6 +55,20 @@ var app = (function(){
                         //Remove admin0 layers and controls
                         households.removeMapComponent(legendAdmin0,layers.admin0,gridControls.admin0,grids.admin0);
                         //Add admin1 layers and controls
+
+
+
+                        /*grids.admin1.on('click', function (e) {
+                            if (e.data) {
+                                //gridControls.admin1.setTemplate('<h1>Temperature:</h1>');
+                                console.log(gridControls.admin1);
+                            } else {
+                                //console.log(e.data);
+                            }
+                        });*/
+
+
+
                         households.addMapComponent(layers.admin1,legendAdmin1,grids.admin1,gridControls.admin1);
                     }
                     if (map.hasLayer(layers.admin2)) {
