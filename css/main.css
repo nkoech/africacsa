@@ -28,7 +28,34 @@ h3 {
     font-weight: 600;
     text-transform: uppercase;
 }
-
+#pageLoader{
+    position:fixed;
+    z-index:99999;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background:rgba(0,0,0,0.9);
+    transition: 1s 0.4s;
+}
+#progress{
+    height:1px;
+    background:#fff;
+    position:absolute;
+    width:0;
+    top:50%;
+    transition: 1s;
+}
+#progstat{
+    font-size:0.7em;
+    letter-spacing: 3px;
+    position:absolute;
+    top:50%;
+    margin-top:-40px;
+    width:100%;
+    text-align:center;
+    color:#fff;
+}
 .app-canvas {
     width: 100%;
     overflow: hidden;
@@ -250,6 +277,36 @@ hr {
 
 .app-canvas {
     width:100%;
+}
+
+.tab-pane-rcp-btn {
+    padding: 15px 2px 0 0;
+}
+
+.tab-pane-rcp-btn a {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/*.map-rcp-emission-chart-title {
+    color: #F69;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid;
+    padding: 20px 0 0 0;
+}*/
+
+.map-rcp-chart {
+    padding: 20px 2px 0 0;
+    position: relative;
+}
+
+#map-rcp-chart-container {
+    width: 100%;
 }
 
 @media(max-width: 1131px){
