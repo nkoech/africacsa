@@ -15,7 +15,7 @@
       </option>
       <option name="outputFromStdout" value="false" />
       <option name="passParentEnvs" value="true" />
-      <option name="program" value="$PROJECT_DIR$/index.html" />
+      <option name="program" value="D:/Junk/npm_Test_Install/node_modules/yuicompressor/build/yuicompressor-2.4.8.jar" />
       <option name="scopeName" value="Project Files" />
       <option name="trackOnlyRoot" value="true" />
       <option name="workingDir" value="$FileDir$" />
