@@ -182,15 +182,15 @@ var app = (function(){
                     var tabPaneHtmlScenario85 =  households.showMapEmissionsScenario(mapData, "8_", "8.5"); //show emission scenario 8.5
                     var tabPaneHtmlScenario45 =  households.showMapEmissionsScenario(mapData, "4_", "4.5"); //show emission scenario 4.5
                     // Chart html
-                    tabPaneHtml = '<div class="map-rcp-body"><div class="row"><div class="tab-pane-rcp-btn"><div class="col-xs-6"><a class="btn btn-large btn-warning btn-md" id="btnTemp" onclick="app.showMapScenarioTempChartOnBtnClick();"><span class="btn-label"> Temperature </span><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></div><div class="col-xs-6"><a class="btn btn-large btn-success btn-md pull-right" id="btnPrec" onclick="app.showMapScenarioPrecChartOnBtnClick();"><span class="btn-label"> Precipitation </span><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></div></div></div><div class="map-rcp-chart"><div id="map-rcp-chart-container"></div><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
+                    tabPaneHtml = '<div class="map-rcp-body"><div class="row"><div class="tab-pane-rcp-btn"><div class="col-xs-6"><a class="btn btn-large btn-warning btn-md" id="btnTemp" onclick="app.showMapScenarioTempChartOnBtnClick();"><span class="btn-label"> Temperature </span><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></div><div class="col-xs-6"><a class="btn btn-large btn-success btn-md pull-right" id="btnPrec" onclick="app.showMapScenarioPrecChartOnBtnClick();"><span class="btn-label"> Precipitation </span><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a></div></div></div><div class="map-rcp-chart"><div id="map-rcp-chart-container"></div></div></div>';
                     $('.tab-pane-rcp-chart').append(tabPaneHtml); // Append html to existing html class to show chart
                     $("#map-rcp-chart-container").width(($(window).width() - $(".map-canvas").width()) - 7); // Set chart container width
                     //show temperature and precipitation scenario chart for rcp 8.5 and 4.5
                     if  (households.globalVal.mapClickEvent) {
-                        households.showMapEmissionsScenarioChart("FUTURE TEMPERATURE CHANGE", tabPaneHtmlScenario85.rcpTempData, tabPaneHtmlScenario45.rcpTempData);
+                        households.showMapEmissionsScenarioChart("FUTURE TEMPERATURE CHANGE", tabPaneHtmlScenario85.rcpTempData, tabPaneHtmlScenario45.rcpTempData, "Temperature (°C)", "°C");
                         households.globalVal.clickTemp = false;
                     } else{
-                        households.showMapEmissionsScenarioChart("CHANGE IN PRECIPITATION", tabPaneHtmlScenario85.rcpPrecData, tabPaneHtmlScenario45.rcpPrecData);
+                        households.showMapEmissionsScenarioChart("CHANGE IN PRECIPITATION", tabPaneHtmlScenario85.rcpPrecData, tabPaneHtmlScenario45.rcpPrecData, "Precipitation (%)", "%");
                     }
                     // Assign rcp 8.5 and 4.5 temperature data to global variables
                     households.globalVal.rcpTempData45 = tabPaneHtmlScenario85.rcpTempData;
@@ -285,7 +285,7 @@ var app = (function(){
             };
         },
 
-        showMapEmissionsScenarioChart: function(chartTitle, scenario85Data, scenario45Data){
+        showMapEmissionsScenarioChart: function(chartTitle, scenario85Data, scenario45Data, yAxisLabel, valSuffix){
             var scenarioChart = new Highcharts.Chart({
                 chart: {
                     type: 'column',
@@ -296,11 +296,23 @@ var app = (function(){
                     text: chartTitle,
                     style: {"fontSize": "14px"}
                 },
+                subtitle: {
+                    useHTML: true,
+                    text: '<div class="chart-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">© Climate Wizard 2015</a></span></div>'
+                },
                 xAxis: {
                     categories: ['2030', '2050', '2080']
                 },
+                yAxis: {
+                    title: {
+                        text: yAxisLabel
+                    }
+                },
                 credits: {
                     enabled: false
+                },
+                tooltip: {
+                    valueSuffix: valSuffix
                 },
                 series: [{
                     name: 'RCP-8.5',
@@ -315,7 +327,7 @@ var app = (function(){
         showMapScenarioTempChartOnBtnClick: function(){
             // Load chart values on temperature button click
             if  (households.globalVal.clickTemp){
-                households.showMapEmissionsScenarioChart("FUTURE TEMPERATURE CHANGE", households.globalVal.rcpTempData85, households.globalVal.rcpTempData45);
+                households.showMapEmissionsScenarioChart("FUTURE TEMPERATURE CHANGE", households.globalVal.rcpTempData85, households.globalVal.rcpTempData45, "Temperature (°C)", "°C");
             }
             households.globalVal.clickTemp = false; // Disable temperature button
             households.globalVal.clickPrec = true; // Enable precipitation button
@@ -325,7 +337,7 @@ var app = (function(){
         showMapScenarioPrecChartOnBtnClick: function(){
             // Load chart values on precipitation button click
             if  (households.globalVal.clickPrec ){
-                households.showMapEmissionsScenarioChart("CHANGE IN PRECIPITATION", households.globalVal.rcpPrecData85, households.globalVal.rcpPrecData45);
+                households.showMapEmissionsScenarioChart("CHANGE IN PRECIPITATION", households.globalVal.rcpPrecData85, households.globalVal.rcpPrecData45, "Precipitation (%)", "%");
             }
             households.globalVal.clickTemp = true;
             households.globalVal.clickPrec = false;

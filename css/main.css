@@ -308,6 +308,22 @@ hr {
     width: 100%;
 }
 
+.chart-rcp-source {
+    color: #999;
+    font-size: 85%;
+    padding: 0 0 5px 0;
+}
+
+.chart-rcp-source a {
+    color: #777;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.chart-rcp-source a:hover {
+    color: #3887be;
+}
+
 @media(max-width: 1131px){
     .app-canvas {
         width:1131px;
