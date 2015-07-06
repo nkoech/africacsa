@@ -291,7 +291,7 @@ var app = (function(){
                     type: 'column',
                     renderTo: 'map-rcp-chart-container'
                 },
-                colors: ["#f0ad4e","#5cb85c"],
+                colors: ["#5cb85c", "#f0ad4e"],
                 title: {
                     text: chartTitle,
                     style: {"fontSize": "14px"}
