@@ -242,12 +242,12 @@ var app = (function(){
                                 tabPaneHtml += '<p class="map-rcp-emission-subtitle">Future Temperature Change</p>';
                             }
                             //List future temperature change by year
-                            if (key.indexOf("AV_TMP")!== -1){
-                                if (key.indexOf("_30")!== -1){
+                            if (key.indexOf("AV_TMP") !== -1){
+                                if (key.indexOf("_30") !== -1){
                                     tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';
                                     rcpTempData.push(mapData[key]);
                                 }
-                                else if (key.indexOf("_50")!== -1){
+                                else if (key.indexOf("_50") !== -1){
                                     tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';
                                     rcpTempData.push(mapData[key]);
                                 }else{
@@ -260,16 +260,16 @@ var app = (function(){
                                     tabPaneHtml += '<p class="map-rcp-emission-subtitle">Change in Precipitation</p>';
                                 }
                                 //List change in precipitation
-                                if (key.indexOf("_30")!== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span></span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
-                                    rcpPrecData.push(+mapData[key].substring(0, mapData[key].length - 1)); // Remove trailing % symbol and convert to Number type
+                                if (key.indexOf("_30") !== -1){
+                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
+                                    rcpPrecData.push( + mapData[key].substring(0, mapData[key].length - 1)); // Remove trailing % symbol and convert to Number type
                                 }
-                                else if (key.indexOf("_50")!== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span></span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
-                                    rcpPrecData.push(+mapData[key].substring(0, mapData[key].length - 1));
+                                else if (key.indexOf("_50") !== -1){
+                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
+                                    rcpPrecData.push( + mapData[key].substring(0, mapData[key].length - 1));
                                 }else{
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span></span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
-                                    rcpPrecData.push(+mapData[key].substring(0, mapData[key].length - 1));
+                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
+                                    rcpPrecData.push( + mapData[key].substring(0, mapData[key].length - 1));
                                 }
                                 count_pc += 1;
                             }
