@@ -261,15 +261,15 @@ var app = (function(){
                                 }
                                 //List change in precipitation
                                 if (key.indexOf("_30") !== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
-                                    rcpPrecData.push( + mapData[key].substring(0, mapData[key].length - 1)); // Remove trailing % symbol and convert to Number type
+                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';
+                                    rcpPrecData.push( + mapData[key]); // Convert to Number type
                                 }
                                 else if (key.indexOf("_50") !== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
-                                    rcpPrecData.push( + mapData[key].substring(0, mapData[key].length - 1));
+                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';
+                                    rcpPrecData.push( + mapData[key]);
                                 }else{
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '</span></p>';
-                                    rcpPrecData.push( + mapData[key].substring(0, mapData[key].length - 1));
+                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';
+                                    rcpPrecData.push( + mapData[key]);
                                 }
                                 count_pc += 1;
                             }
