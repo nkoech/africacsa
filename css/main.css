@@ -336,6 +336,18 @@ hr {
     color: #3887be;
 }
 
+.map-frm-perc-data {
+    font-weight: bold;
+}
+
+.next a {
+    margin: 0 10px 0 0;
+}
+
+.pager li a {
+    border: 1px solid #f69;
+}
+
 @media(max-width: 1131px){
     .app-canvas {
         width:1131px;
