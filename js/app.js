@@ -209,9 +209,10 @@ var app = (function(){
                     // Assign rcp 8.5 and 4.5 precipitation data to global variables
                     households.globalVal.rcpPrecData45 = tabPaneHtmlScenario85.rcpPrecData;
                     households.globalVal.rcpPrecData85 = tabPaneHtmlScenario45.rcpPrecData;
-                    //Show temperature scenario text for rcp 8.5 and 4.5
+
+                    /*//Show temperature scenario text for rcp 8.5 and 4.5
                     tabPaneHtml = '<div class="map-rcp-body">' + tabPaneHtmlScenario85.tabPaneHtml + tabPaneHtmlScenario45.tabPaneHtml + '<div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div>';
-                    $('.tab-pane-rcp').append(tabPaneHtml);
+                    $('.tab-pane-rcp').append(tabPaneHtml);*/
 
                     if (tabPaneFarmSystem.farmSystemLevelNext.length !=0 ) {
                         // Assign data to global pagination variables
@@ -219,11 +220,11 @@ var app = (function(){
                         households.globalVal.farmSystemPercNextData = tabPaneFarmSystem.farmSystemPercNext;
                         households.globalVal.farmSystemLevelPrevData = tabPaneFarmSystem.farmSystemLevelPrev;
                         households.globalVal.farmSystemPercPrevData = tabPaneFarmSystem.farmSystemPercPrev;
-                        // Farm system with pagination html display
+                        // Farm system with pagination - html display
                         tabPaneHtml = '<div class="map-rcp-body">' + tabPaneFarmSystem.tabPaneHtml + '</tbody></table><nav><ul class="pager"><li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li><li class="next"><a onclick="app.showMapFarmSystemOnNextClick();">Next <span aria-hidden="true">&rarr;</span></a></li></ul></nav><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
                         $('.tab-pane-farmsys-tab').append(tabPaneHtml);
                     }else{
-                        // Farm system without pagination html display
+                        // Farm system without pagination - html display
                         tabPaneHtml = '<div class="map-rcp-body">' + tabPaneFarmSystem.tabPaneHtml + '</tbody></table><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
                         $('.tab-pane-farmsys-tab').append(tabPaneHtml);
                     }
@@ -248,14 +249,18 @@ var app = (function(){
                 tabPaneHtml += '<p class="map-rcp-region-title"> Region: No Record </p></div>';
             }
             $('.tab-pane-rcp-chart').append(tabPaneHtml);
-            $('.tab-pane-rcp').append(tabPaneHtml);
+
+            /*$('.tab-pane-rcp').append(tabPaneHtml);*/
+
             $('.tab-pane-farmsys-tab').append(tabPaneHtml);
         },
 
         showMapEmissionsScenario: function(mapData, searchRcp, rcpCategory){
-            var count_rcp = 0;
+
+            /*var count_rcp = 0;
             var count_pc = 0;
-            var tabPaneHtml = "";
+            var tabPaneHtml = "";*/
+
             var rcpTempData = [];
             var rcpPrecData = [];
 
@@ -264,50 +269,71 @@ var app = (function(){
                     if (key !== "No_HSEHOLD" && key !== "RURAL_POP") {
                         //Display emission scenario
                         if (key.indexOf(searchRcp)!== -1){
-                            //Section emmision and temperature titles
+
+                            /*//Section emmision and temperature titles
                             if (count_rcp < 1){
                                 tabPaneHtml += '<p class="map-rcp-emission-title">Emission Scenario ' + rcpCategory + '</p>';
                                 tabPaneHtml += '<p class="map-rcp-emission-subtitle">Future Temperature Change</p>';
-                            }
+                            }*/
+
                             //List future temperature change by year
                             if (key.indexOf("AV_TMP") !== -1){
                                 if (key.indexOf("_30") !== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';
+
+                                    /*tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';*/
+
                                     rcpTempData.push(mapData[key]);
                                 }
                                 else if (key.indexOf("_50") !== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';
+
+                                    /*tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';*/
+
                                     rcpTempData.push(mapData[key]);
                                 }else{
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';
+
+                                    /*tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '&deg;C</span></p>';*/
                                     rcpTempData.push(mapData[key]);
                                 }
                             }else{
-                                //Precipitation section title
+
+                                /*//Precipitation section title
                                 if (count_pc < 1){
                                     tabPaneHtml += '<p class="map-rcp-emission-subtitle">Change in Precipitation</p>';
-                                }
+                                }*/
+
                                 //List change in precipitation
                                 if (key.indexOf("_30") !== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';
-                                    rcpPrecData.push( + mapData[key]); // Convert to Number type
+
+                                    /*tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2030: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';*/
+
+                                    rcpPrecData.push( + mapData[key]); // Convert to Number type and push
                                 }
                                 else if (key.indexOf("_50") !== -1){
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';
+
+                                    /*tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2050: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';*/
+
                                     rcpPrecData.push( + mapData[key]);
                                 }else{
-                                    tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';
+
+                                    /*tabPaneHtml += '<p class="map-rcp"><span class="map-rcp-year-label">2080: </span><span class="map-rcp-year-data">' + mapData[key] + '%</span></p>';*/
+
                                     rcpPrecData.push( + mapData[key]);
                                 }
-                                count_pc += 1;
+
+                                /*count_pc += 1;*/
+
                             }
-                            count_rcp += 1;
+
+                            /*count_rcp += 1;*/
+
                         }
                     }
                 }
             }
             return {
-                tabPaneHtml: tabPaneHtml,
+
+                /*tabPaneHtml: tabPaneHtml,*/
+
                 rcpTempData: rcpTempData,
                 rcpPrecData: rcpPrecData
             };
@@ -360,7 +386,7 @@ var app = (function(){
         },
 
         showMapFarmSystemOnNextClick: function(){
-            $(".map-rcp-body").remove(); //remove p and  br elements
+            $(".tab-pane-farmsys-tab .map-rcp-body").remove(); //remove elements
             var tabPaneHtml = '<div class="map-rcp-body"><p class="map-rcp-emission-title">Farming Sub-systems</p><div class="map-farmsys-body"><table class="table table-condensed table-striped"><tbody>'; //set title
             for (var i = 0; i < households.globalVal.farmSystemLevelNextData.length; i++) {
                 tabPaneHtml += '<tr><td class="map-rcp-year-data">' + households.globalVal.farmSystemLevelNextData[i] + '<span class="map-frm-perc-data">' + ' ' + households.globalVal.farmSystemPercNextData[i] + '%</span></td></tr>';
@@ -370,7 +396,7 @@ var app = (function(){
         },
 
         showMapFarmSystemOnPrevClick: function() {
-            $(".map-rcp-body").remove(); //remove p and  br element
+            $(".tab-pane-farmsys-tab .map-rcp-body").remove(); //remove elements
             var tabPaneHtml = '<div class="map-rcp-body"><p class="map-rcp-emission-title">Farming Sub-systems</p><div class="map-farmsys-body"><table class="table table-condensed table-striped"><tbody>'; //set title
             for (var i = 0; i < households.globalVal.farmSystemLevelPrevData.length; i++) {
                 tabPaneHtml += '<tr><td class="map-rcp-year-data">' + households.globalVal.farmSystemLevelPrevData[i] + '<span class="map-frm-perc-data">' + ' ' + households.globalVal.farmSystemPercPrevData[i] + '%</span></td></tr>';
