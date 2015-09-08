@@ -386,22 +386,26 @@ var app = (function(){
         },
 
         showMapFarmSystemOnNextClick: function(){
-            $(".tab-pane-farmsys-tab .map-rcp-body").remove(); //remove elements
-            var tabPaneHtml = '<div class="map-rcp-body"><p class="map-rcp-emission-title">Farming Sub-systems</p><div class="map-farmsys-body"><table class="table table-condensed table-striped"><tbody>'; //set title
-            for (var i = 0; i < households.globalVal.farmSystemLevelNextData.length; i++) {
-                tabPaneHtml += '<tr><td class="map-rcp-year-data">' + households.globalVal.farmSystemLevelNextData[i] + '<span class="map-frm-perc-data">' + ' ' + households.globalVal.farmSystemPercNextData[i] + '%</span></td></tr>';
-            }
-            tabPaneHtml += '</tbody></table><nav><ul class="pager"><li class="previous"><a onclick="app.showMapFarmSystemOnPrevClick();"><span aria-hidden="true">&larr;</span> Previous</a></li><li class="next disabled"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li></ul></nav><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
-            $('.tab-pane-farmsys-tab').append(tabPaneHtml);
+            var nextClick = true;
+            households.showMapFarmSystemPagination(households.globalVal.farmSystemLevelNextData, households.globalVal.farmSystemPercNextData, nextClick);
         },
 
         showMapFarmSystemOnPrevClick: function() {
+            var nextClick = false;
+            households.showMapFarmSystemPagination(households.globalVal.farmSystemLevelPrevData, households.globalVal.farmSystemPercPrevData, nextClick);
+        },
+
+        showMapFarmSystemPagination: function(farmSystemLevelData, farmSystemPercData, nextClick){
             $(".tab-pane-farmsys-tab .map-rcp-body").remove(); //remove elements
             var tabPaneHtml = '<div class="map-rcp-body"><p class="map-rcp-emission-title">Farming Sub-systems</p><div class="map-farmsys-body"><table class="table table-condensed table-striped"><tbody>'; //set title
-            for (var i = 0; i < households.globalVal.farmSystemLevelPrevData.length; i++) {
-                tabPaneHtml += '<tr><td class="map-rcp-year-data">' + households.globalVal.farmSystemLevelPrevData[i] + '<span class="map-frm-perc-data">' + ' ' + households.globalVal.farmSystemPercPrevData[i] + '%</span></td></tr>';
+            for (var i = 0; i < farmSystemLevelData.length; i++) { // Add farming system data
+                tabPaneHtml += '<tr><td class="map-rcp-year-data">' + farmSystemLevelData[i] + '<span class="map-frm-perc-data">' + ' ' + farmSystemPercData[i] + '%</span></td></tr>';
             }
-            tabPaneHtml += '</tbody></table><nav><ul class="pager"><li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li><li class="next"><a onclick="app.showMapFarmSystemOnNextClick();">Next <span aria-hidden="true">&rarr;</span></a></li></ul></nav><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
+            if (nextClick) { // Add pagination buttons
+                tabPaneHtml += '</tbody></table><nav><ul class="pager"><li class="previous"><a onclick="app.showMapFarmSystemOnPrevClick();"><span aria-hidden="true">&larr;</span> Previous</a></li><li class="next disabled"><a href="#">Next <span aria-hidden="true">&rarr;</span></a></li></ul></nav><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
+            }else{
+                tabPaneHtml += '</tbody></table><nav><ul class="pager"><li class="previous disabled"><a href="#"><span aria-hidden="true">&larr;</span> Previous</a></li><li class="next"><a onclick="app.showMapFarmSystemOnNextClick();">Next <span aria-hidden="true">&rarr;</span></a></li></ul></nav><div class="map-rcp-source"><span>Source: <a href="http://climatewizard.ciat.cgiar.org/" target="_blank">&copy; Climate Wizard 2015 </a></span></div></div></div>';
+            }
             $('.tab-pane-farmsys-tab').append(tabPaneHtml);
         },
 
