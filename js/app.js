@@ -190,13 +190,13 @@ var app = (function(){
                     // Get farming system for each region
                     if (map.hasLayer(layers.admin0)) {
                         cnty_prof = window.admin0Data; // Get external admin0 JSON file
-                        tabPaneFarmSystem = households.showMapFarmSystem(mapData, cnty_prof, "ADM0_NAME", "region");
+                        tabPaneFarmSystem = households.showMapFarmSystem(mapData, cnty_prof, "ADM0_NAME");
                     } else if (map.hasLayer(layers.admin1)) {
-                        cnty_prof = window.admin1Data; // Get external admin1 JSON file
-                        tabPaneFarmSystem = households.showMapFarmSystem(mapData, cnty_prof, "ADM1_NAME", "region");
+                        cnty_prof = window.admin1Data;
+                        tabPaneFarmSystem = households.showMapFarmSystem(mapData, cnty_prof, "ADM1_NAME");
                     }else{
-                        cnty_prof = window.admin2Data; // Get external admin2 JSON file
-                        tabPaneFarmSystem = households.showMapFarmSystem(mapData, cnty_prof, "ADM2_NAME", "region");
+                        cnty_prof = window.admin2Data;
+                        tabPaneFarmSystem = households.showMapFarmSystem(mapData, cnty_prof, "ADM2_NAME");
                     }
                     // Chart html
                     tabPaneHtml = '<div class="map-rcp-body"><div class="row"><div class="tab-pane-rcp-btn"><div class="col-xs-6"><a class="btn btn-large btn-danger btn-md" id="btnTemp" onclick="app.showMapScenarioTempChartOnBtnClick();"><span class="btn-label"> Temperature </span></a></div><div class="col-xs-6"><a class="btn btn-large btn-primary btn-md pull-right" id="btnPrec" onclick="app.showMapScenarioPrecChartOnBtnClick();"><span class="btn-label"> Precipitation </span></a></div></div></div><div class="map-rcp-chart"><div id="map-rcp-chart-container"></div></div></div>';
@@ -346,7 +346,7 @@ var app = (function(){
             };
         },
 
-        showMapFarmSystem: function(mapData, cnty_prof, layerFieldName, regionId){
+        showMapFarmSystem: function(mapData, cnty_prof, layerFieldName){
             var count = 0; // Count for title display
             var farmSystemCount = 0; // Count for pagination
             var tabPaneHtml = "";
@@ -364,17 +364,19 @@ var app = (function(){
                         }
                         for (var i = 0; i < cnty_prof.profile.length; i++) { //get farming system JSON information
                             var obj = cnty_prof.profile[i];
-                            if (obj.hasOwnProperty(regionId) && obj.hasOwnProperty("level_2")) { //check if object has property
-                                if (households.replaceSpecialChar(mapData[key])== households.replaceSpecialChar(obj[regionId].toString())) {
-                                    farmSystemCount += 1;
-                                    if (key == layerFieldName) { // Get farming systems data and set html
-                                        if (farmSystemCount < 10) {
-                                            tabPaneHtml += '<tr><td class="map-rcp-year-data">' + obj["level_2"].toString() + '<span class="map-frm-perc-data">' + ' ' + obj["level_perc"].toString() + '%</span></td></tr>';
-                                            farmSystemLevelPrev.push(obj["level_2"].toString());
-                                            farmSystemPercPrev.push(obj["level_perc"].toString());
-                                        } else {
-                                            farmSystemLevelNext.push(obj["level_2"].toString());
-                                            farmSystemPercNext.push(obj["level_perc"].toString());
+                            if (obj.hasOwnProperty("country") && obj.hasOwnProperty("region") && obj.hasOwnProperty("level_2")) { //check if object has property
+                                if (households.replaceSpecialChar(mapData.ADM0_NAME) == households.replaceSpecialChar(obj["country"].toString())) { //check for country
+                                    if (households.replaceSpecialChar(mapData[key])== households.replaceSpecialChar(obj["region"].toString())) { // check for region
+                                        farmSystemCount += 1;
+                                        if (key == layerFieldName) { // Get farming systems data and set html
+                                            if (farmSystemCount < 10) {
+                                                tabPaneHtml += '<tr><td class="map-rcp-year-data">' + obj["level_2"].toString() + '<span class="map-frm-perc-data">' + ' ' + obj["level_perc"].toString() + '%</span></td></tr>';
+                                                farmSystemLevelPrev.push(obj["level_2"].toString());
+                                                farmSystemPercPrev.push(obj["level_perc"].toString());
+                                            } else {
+                                                farmSystemLevelNext.push(obj["level_2"].toString());
+                                                farmSystemPercNext.push(obj["level_perc"].toString());
+                                            }
                                         }
                                     }
                                 }
